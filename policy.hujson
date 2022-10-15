@@ -1,0 +1,33 @@
+{
+	"groups": {
+		"group:infra": ["zifnab06@github"],
+		"group:admin": ["zifnab06@github"],
+	},
+
+	"tagOwners": {
+		"tag:infra": ["group:admin"],
+	},
+
+	"acls": [
+		{"action": "accept", "users": ["group:infra"], "ports": ["tag:infra:*"]},
+		{"action": "accept", "users": ["tag:infra"], "ports": ["tag:infra:443"]},
+	],
+	"ssh": [
+		{
+			"action": "check",
+			"src":    ["group:infra"],
+			"dst":    ["tag:infra"],
+			"users":  ["autogroup:nonroot", "root"],
+		},
+	],
+	"tests": [
+		{
+			"src":    "group:infra",
+			"accept": ["tag:infra:22"],
+		},
+		{
+			"src":    "tag:infra",
+			"accept": ["tag:infra:443"],
+		},
+	],
+}
