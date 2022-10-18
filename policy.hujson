@@ -6,6 +6,7 @@
 
 	"tagOwners": {
 		"tag:infra": ["group:admin"],
+		"tag:build": ["group:admin"],
 	},
 
 	"acls": [
